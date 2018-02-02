@@ -11,7 +11,7 @@ const VENDOR_LIBS = [
   'react-redux', 
   'react-dom',
   'redux-thunk',
-  'material-ui'
+  'material-ui',
 ];
 
 module.exports = {
@@ -23,6 +23,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash].js'
   },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {

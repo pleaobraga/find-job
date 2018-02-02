@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import JobList from './components/JobList'
 //import reducers from './reducers';
 
 const App = () => {
@@ -13,9 +15,9 @@ const App = () => {
     // <Provider store={store}>
     //   <Routes />
     // </Provider>
-    <div>
-      Hello Word!!
-    </div>
+    <MuiThemeProvider>
+         <JobList />
+    </MuiThemeProvider>
   );
 };
 
