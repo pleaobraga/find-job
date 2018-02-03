@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import { CircularProgress } from 'material-ui/Progress'
-import TextField from 'material-ui/TextField';
+import TextField from 'material-ui/TextField'
 import JobList from '../components/JobList'
 import styled from 'styled-components'
 
@@ -16,6 +16,12 @@ const Container = styled.div `
 
 const Title = styled.h1 `
     font-size: 2.5em;
+`
+
+const Loader = styled(CircularProgress) `
+    && {
+        margin-top: 60px
+    }
 `
 
 class AvailableJobs extends Component {
@@ -33,11 +39,10 @@ class AvailableJobs extends Component {
 
         return (
             <Container>
-                <Title>Avaiable Jobs</Title>
-
+                <Title>Available Jobs</Title>
                 {   
                     fetching && 
-                    <CircularProgress size={50} />
+                    <Loader size={50} />
                 }
                 {   
                     !fetching && !error &&
@@ -46,15 +51,9 @@ class AvailableJobs extends Component {
                 {
                     !fetching && error
                 }
-                
             </Container>
         )
-
-
     }
-
-    
-
 }
 
 const mapStateToProps = ({ jobs }) => ({ jobs })

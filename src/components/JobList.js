@@ -4,6 +4,9 @@ import _ from 'lodash'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import Icon from 'material-ui/Icon'
+import { rangeDays } from '../Utils/helper'
+import { withRouter } from 'react-router-dom'
+
 
 
 const StyledCard = styled(Card)`
@@ -32,15 +35,21 @@ const StyledCardContent = styled(CardContent) `
         display: flex;
         padding: 10px 0 0 0 !important ;
 
-        span {
-            display: flex;
-            align-items: center;
-            margin-right: 5px;
-            font-size: 13px;
-        }
-
         > span {
             margin-right: 30px;
+        }
+    }
+`
+
+const IconTag = styled(Typography) `
+    && {
+        display: flex;
+        align-items: center;
+        font-size: 13px;    
+
+        span {
+            margin-right: 5px;
+            font-size: 13px
         }
     }
 `
@@ -60,17 +69,21 @@ const StyledCardMedia = styled(CardMedia)`
 `;
 
 const Box = styled.div `
-    max-width: 750px;
+    max-width: 680px;
     width: 100%;
 `
 
 
 function JobList(props) {
 
+    function showJobDetail (id) {
+        props.history.push(`/${id}`);
+    }
+
     function renderJobOpportunity (jobs) {
         return jobs.map(job => {
             return (
-                <StyledCard key={job.id} >
+                <StyledCard key={job.id} onClick={ () => showJobDetail(job.id) } >
                     <StyledCardMedia
                         image="http://lorempixel.com/100/100"
                     />
@@ -78,9 +91,9 @@ function JobList(props) {
                         <Typography component='h3' >{job.title}</Typography>
                         <Typography component='h4'>{job.company}</Typography>
                         <StyledCardContent component='div' >
-                            <Typography component='span'><Icon>location_on</Icon> {job.location}</Typography>
-                            <Typography component='span'><Icon>access_time</Icon> {job.workSchedule}</Typography>
-                            <Typography component='span'><Icon>date_range</Icon> {job.date}</Typography>
+                            <IconTag component='span'><Icon>location_on</Icon> {job.location}</IconTag>
+                            <IconTag component='span'><Icon>access_time</Icon> {job.workSchedule}</IconTag>
+                            <IconTag component='span'><Icon>date_range</Icon> {rangeDays(job.date)}</IconTag>
                         </StyledCardContent>
                     </Container>
                 </StyledCard>
@@ -99,4 +112,4 @@ function JobList(props) {
     } 
 }
 
-export default JobList
+export default withRouter(JobList)

@@ -30,6 +30,7 @@ ReactDOM.render(
           <div className="job" >
               <Switch>
                   <Route path="/" component={AvaiableJobs} />
+                  <Route path="/:id" component={AvaiableJobs} />
               </Switch>
           </div>
       </BrowserRouter>

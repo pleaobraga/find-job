@@ -25,8 +25,10 @@ export const getAllJobs = () => dispatch => {
 
     return api.getAllJobs()
         .then(response => {
-            dispatch(getAllJobsSuccess(response.data))
-            return response;
+            setTimeout( () => {
+                dispatch(getAllJobsSuccess(response.data))
+                return response
+            },1000)
         })
         .catch( error => dispatch(getAllJobsError(error)))
 }
