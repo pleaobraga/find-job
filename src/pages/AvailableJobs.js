@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import connect from 'react-redux'
+import * as actions from '../actions'
 
 
 class AvailableJobs extends Component {
-
     
+    componentDidMount() {
+        this.props.getAllJobs()
+    }
+
+
+    render() {
+
+        let {  }
+
+    }
 
     
 
@@ -16,4 +26,4 @@ mapDispatchToProps = dispatch => ({
     getAllJobs: () => dispatch(actions.getAllJobs())
 })
 
-export default AvailableJobs
+export default connect(mapStateToProps, mapDispatchToProps)(AvailableJobs)

@@ -28,7 +28,5 @@ export const getAllJobs = () => dispatch => {
             dispatch(getAllJobsSuccess(response.data))
             return response;
         })
-        .catch( error => {
-            dispatch(getAllJobsError(error))
-        })
+        .catch( error => dispatch(getAllJobsError(error)))
 }

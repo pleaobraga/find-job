@@ -9,7 +9,7 @@ const VENDOR_LIBS = [
   'lodash', 
   'redux', 
   'react-redux', 
-  'react-dom',
+  'react-router-dom',
   'redux-thunk',
   'material-ui',
 ];

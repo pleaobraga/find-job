@@ -3,25 +3,34 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
 import JobList from './components/JobList'
 import Reboot from 'material-ui/Reboot';
 import 'typeface-roboto'
+import rootReducers from './reducer';
 
-//import reducers from './reducers';
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    }) : compose;
 
-const App = () => {
-  //const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+const enhancer = composeEnhancers(
+  applyMiddleware(ReduxThunk),
+);
 
-  return (
-    // <Provider store={store}>
-    //   <Routes />
-    // </Provider>
-    <div>
-      <Reboot />
-      <JobList />
-    </div>
-  );
-};
+const store = createStore(rootReducers, enhancer);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(
+  <Provider store={store} >
+      <BrowserRouter >
+          <div className="job" >
+              <Switch>
+                  <Route path="/" component={JobList} />
+              </Switch>
+          </div>
+      </BrowserRouter>
+  </Provider>, 
+  document.getElementById('root'));
