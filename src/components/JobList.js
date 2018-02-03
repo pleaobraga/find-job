@@ -13,12 +13,12 @@ const StyledCard = styled(Card)`
         cursor: pointer;
 
         h3 {
-            font-size: 25px;
+            font-size: 1.2em;
             font-weight: 600;
         }
 
         h4 {
-            font-size: 16px;
+            font-size: 0.9em;
         }
 
         &:hover {
@@ -59,34 +59,44 @@ const StyledCardMedia = styled(CardMedia)`
     }
 `;
 
+const Box = styled.div `
+    max-width: 750px;
+    width: 100%;
+`
 
 
 function JobList(props) {
 
-    if(!_.isEmpty(props.jobs)) {
-        return (
-            <div>
-                <StyledCard>
+    function renderJobOpportunity (jobs) {
+        return jobs.map(job => {
+            return (
+                <StyledCard key={job.id} >
                     <StyledCardMedia
                         image="http://lorempixel.com/100/100"
                     />
                     <Container component='div' >
-                        <Typography component='h3' >{props.jobs[0].title}</Typography>
-                        <Typography component='h4'>{props.jobs[0].company}</Typography>
+                        <Typography component='h3' >{job.title}</Typography>
+                        <Typography component='h4'>{job.company}</Typography>
                         <StyledCardContent component='div' >
-                            <Typography component='span'><Icon>location_on</Icon> {props.jobs[0].location}</Typography>
-                            <Typography component='span'><Icon>access_time</Icon> {props.jobs[0].workSchedule}</Typography>
-                            <Typography component='span'><Icon>date_range</Icon> {props.jobs[0].date}</Typography>
+                            <Typography component='span'><Icon>location_on</Icon> {job.location}</Typography>
+                            <Typography component='span'><Icon>access_time</Icon> {job.workSchedule}</Typography>
+                            <Typography component='span'><Icon>date_range</Icon> {job.date}</Typography>
                         </StyledCardContent>
                     </Container>
                 </StyledCard>
-            </div>
+            )
+        })
+    }
+
+    if(!_.isEmpty(props.jobs)) {
+        return (
+            <Box>
+                { renderJobOpportunity(props.jobs) }
+            </Box>
         )
-
-     } else {
+    } else {
         return null
-     } 
-
+    } 
 }
 
 export default JobList

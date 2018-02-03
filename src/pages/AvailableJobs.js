@@ -4,14 +4,25 @@ import * as actions from '../actions'
 import { CircularProgress } from 'material-ui/Progress'
 import TextField from 'material-ui/TextField';
 import JobList from '../components/JobList'
+import styled from 'styled-components'
 
+
+const Container = styled.div `
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+`
+
+const Title = styled.h1 `
+    font-size: 2.5em;
+`
 
 class AvailableJobs extends Component {
     
     componentDidMount() {
         this.props.getAllJobs()
     }
-
 
     render() {
         let { 
@@ -21,13 +32,22 @@ class AvailableJobs extends Component {
         } = this.props.jobs
 
         return (
-            <div>
+            <Container>
+                <Title>Avaiable Jobs</Title>
+
                 {   
                     fetching && 
                     <CircularProgress size={50} />
                 }
-                <JobList jobs={jobs} />
-            </div>
+                {   
+                    !fetching && !error &&
+                    <JobList jobs={jobs} />
+                }
+                {
+                    !fetching && error
+                }
+                
+            </Container>
         )
 
 
