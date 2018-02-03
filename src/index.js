@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
 import JobList from './components/JobList'
+import AvaiableJobs from './pages/AvailableJobs'
 import Reboot from 'material-ui/Reboot';
 import 'typeface-roboto'
 import rootReducers from './reducer';
@@ -28,7 +29,7 @@ ReactDOM.render(
       <BrowserRouter >
           <div className="job" >
               <Switch>
-                  <Route path="/" component={JobList} />
+                  <Route path="/" component={AvaiableJobs} />
               </Switch>
           </div>
       </BrowserRouter>

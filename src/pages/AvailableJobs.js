@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import connect from 'react-redux'
+import { connect } from 'react-redux'
 import * as actions from '../actions'
+import { CircularProgress } from 'material-ui/Progress'
+import TextField from 'material-ui/TextField';
+import JobList from '../components/JobList'
 
 
 class AvailableJobs extends Component {
@@ -11,8 +14,22 @@ class AvailableJobs extends Component {
 
 
     render() {
+        let { 
+            fetching,
+            jobs,
+            error 
+        } = this.props.jobs
 
-        let {  }
+        return (
+            <div>
+                {   
+                    fetching && 
+                    <CircularProgress size={50} />
+                }
+                <JobList jobs={jobs} />
+            </div>
+        )
+
 
     }
 
@@ -20,9 +37,9 @@ class AvailableJobs extends Component {
 
 }
 
-mapStateToProps = ({ jobs }) => ({ jobs })
+const mapStateToProps = ({ jobs }) => ({ jobs })
 
-mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     getAllJobs: () => dispatch(actions.getAllJobs())
 })
 
