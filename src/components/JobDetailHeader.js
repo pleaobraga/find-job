@@ -87,7 +87,7 @@ function JobDetailHeader (props) {
                 </Container>
             </Header>
         )    
-
+        
     } else {
         return null
     } 

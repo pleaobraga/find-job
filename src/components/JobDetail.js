@@ -63,7 +63,7 @@ function JobDetail(props) {
                 { 
                     <List>
                         { section.content.map(info => {
-                            return <li>{info}</li>
+                            return <li key={info} >{info}</li>
                         }) } 
                     </List>
                 }
