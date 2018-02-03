@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import JobDetail from '../components/JobDetail' 
 import JobDetailHeader from '../components/JobDetailHeader' 
-import Card from 'material-ui/Card/Card';
-import CardActions from 'material-ui/Card/CardActions';
-import CardContent from 'material-ui/Card/CardContent';
-import Button from 'material-ui/Button/Button';
-import Typography from 'material-ui/Typography';
-import Grid from 'material-ui/Grid';
-import styled from 'styled-components';
+import * as actions from '../actions'
+import Card from 'material-ui/Card/Card'
+import CardActions from 'material-ui/Card/CardActions'
+import CardContent from 'material-ui/Card/CardContent'
+import Button from 'material-ui/Button/Button'
+import Typography from 'material-ui/Typography'
+import Grid from 'material-ui/Grid'
+import styled from 'styled-components'
 
 
 const ApplyCard = styled(Card)`
@@ -37,17 +38,13 @@ class JobView extends Component {
     }
 
     componentDidMount() {
-        let { id } = this.props.match.params,
-            job
-                    
-        job = this.props.jobs[id]
-
-        this.setState({job})
+        let { id } = this.props.match.params                  
+        this.props.getJob(id)
     }
 
     render() {
 
-        let { job } = this.state
+        let { job } = this.props
         
         if(!_.isEmpty(job)) {
             return (
@@ -87,9 +84,13 @@ class JobView extends Component {
 }
 
 const mapStateToProps = ({ jobs }) => ({ 
-    jobs: jobs.jobs
+    job: jobs.job
 })
 
-export default connect(mapStateToProps)(JobView)
+const mapDispatchToProps = dispatch => ({
+    getJob: (id) =>  dispatch(actions.getJob(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(JobView)
 
 

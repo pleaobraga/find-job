@@ -19,6 +19,21 @@ const getAllJobsError = error => ({
     error
 })
 
+const getJobInit = () => ({
+    type: constant.GET_JOB, 
+})
+
+const getJobSuccess = job => ({
+    type: constant.GET_JOB_SUCCESS, 
+    job
+})
+
+const getJobError = error => ({
+    type: constant.GET_JOB_ERROR, 
+    error
+})
+
+
 // bound action creator
 export const getAllJobs = () => dispatch => {
     dispatch(getAllJobsInit())
@@ -31,4 +46,17 @@ export const getAllJobs = () => dispatch => {
             },1000)
         })
         .catch( error => dispatch(getAllJobsError(error)))
+}
+
+export const getJob = (id) => dispatch => {
+    dispatch(getJobInit())
+
+    return api.getJob(id)
+        .then(response => {
+            setTimeout( () => {
+                dispatch(getJobSuccess(response.data))
+                return response
+            },1000)
+        })
+        .catch( error => dispatch(getJobsError(error)))
 }

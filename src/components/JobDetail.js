@@ -93,9 +93,9 @@ function JobDetail(props) {
                 { renderTopics(props.job.topics) }
             </StyledPaper>
         )
-    } else {
-        return null
-    }
+    } 
+    
+    return null
 }
 
 export default JobDetail

@@ -5,3 +5,7 @@ import { URL_BASE } from '../constants'
 export const getAllJobs = () => {
     return axios.get(`${URL_BASE}/jobs`)
 }
+
+export const getJob = (id) => {
+    return axios.get(`${URL_BASE}/jobs/${id}`)
+}
