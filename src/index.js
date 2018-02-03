@@ -5,8 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch, } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
-import JobList from './components/JobList'
 import AvaiableJobs from './pages/AvailableJobs'
+import JobView from './pages/JobView'
 import Reboot from 'material-ui/Reboot';
 import 'typeface-roboto'
 import rootReducers from './reducer';
@@ -29,8 +29,8 @@ ReactDOM.render(
       <BrowserRouter >
           <div className="job" >
               <Switch>
+                  <Route path="/:id" component={JobView} />
                   <Route path="/" component={AvaiableJobs} />
-                  <Route path="/:id" component={AvaiableJobs} />
               </Switch>
           </div>
       </BrowserRouter>

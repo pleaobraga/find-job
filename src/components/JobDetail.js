@@ -1,14 +1,40 @@
 import React from 'react'
+import _ from 'lodash'
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import _ from 'lodash'
+import styled from 'styled-components'
+
 
 const Container = styled.div `
     display: flex;
     justify-content: start;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin: 10px 0;
+`
+
+const Title = styled(Typography) `
+    && {
+        font-size: 1.0em;
+        font-weight: 600;
+        margin: 10px 0
+    }
+`
+
+const Text = styled(Typography) `
+    && {
+        font-size: 0.9em;
+    }
+`
+
+const StyledPaper = styled(Paper) `
+    && {
+        padding 20px;
+    }
+`
+
+const List = styled.ul `
+    margin: 10px 0px;
 `
 
 function JobDetail(props) {
@@ -22,34 +48,54 @@ function JobDetail(props) {
     function renderTopics(topics) {
         return topics.map( topic => {
             return topic.type === 'text' 
-            ? renderText(description)
-            : renderList(description)
+            ? renderText(topic)
+            : renderList(topic)
         })
     }
 
-    function renderList() {
-
+    function renderList(section) {
+        return (
+            <Container key={section.title} >
+                { 
+                    !_.isEmpty(section.title) && 
+                    <Title component='h3' >{section.title}</Title> 
+                }
+                { 
+                    <List>
+                        { section.content.map(info => {
+                            return <li>{info}</li>
+                        }) } 
+                    </List>
+                }
+            </Container>
+        )
     }
 
     function renderText(section) {
-        <Container>
-            { 
-                !_.isEmpty(section.title) && 
-                <Typography component='h3' >{section.title}</Typography> 
-            }
-            { 
-                !_.isEmpty(section.content) && 
-                <Typography component='p' >{section.content}</Typography> 
-            }
-        </Container>
+        return (
+            <Container key={section.title} >
+                { 
+                    !_.isEmpty(section.title) && 
+                    <Title component='h3' >{section.title}</Title> 
+                }
+                { 
+                    !_.isEmpty(section.content) && 
+                    <Text component='p' >{section.content}</Text> 
+                }
+            </Container>
+        )
     }
 
     if(props.job) {
-        <Paper>
-            <Typography></Typography>
-        </Paper>
+        return (
+            <StyledPaper>
+                { renderDescription(props.job.description) }
+                { renderTopics(props.job.topics) }
+            </StyledPaper>
+        )
     } else {
         return null
     }
-
 }
+
+export default JobDetail

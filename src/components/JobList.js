@@ -33,7 +33,7 @@ const StyledCard = styled(Card)`
 const StyledCardContent = styled(CardContent) `
     && {
         display: flex;
-        padding: 10px 0 0 0 !important ;
+        padding: 20px 0 0 0 !important ;
 
         > span {
             margin-right: 30px;
