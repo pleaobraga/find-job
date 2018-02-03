@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import _ from 'lodash'
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
+import Card, { CardContent, CardMedia } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import Icon from 'material-ui/Icon'
 import { rangeDays } from '../Utils/helper'
@@ -66,7 +66,7 @@ const StyledCardMedia = styled(CardMedia)`
         width: 100px;
         background: #f8f8f8;
     }
-`;
+`
 
 const Box = styled.div `
     max-width: 680px;

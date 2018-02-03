@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import JobDetail from '../components/JobDetail' 
+import JobDetailHeader from '../components/JobDetailHeader' 
 
 
 class JobView extends Component {
@@ -26,6 +27,7 @@ class JobView extends Component {
         if(!_.isEmpty(job)) {
             return (
                 <div>
+                    <JobDetailHeader job={job} />
                     <JobDetail job={job} />
                 </div>
             )
