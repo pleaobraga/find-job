@@ -11,6 +11,7 @@ import Reboot from 'material-ui/Reboot'
 import 'typeface-roboto'
 import rootReducers from './reducer'
 import 'babel-polyfill'
+import ReactSEO from 'react-seo'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -22,8 +23,33 @@ const enhancer = composeEnhancers(
     applyMiddleware(ReduxThunk),
 );
 
-const store = createStore(rootReducers, enhancer);
+const store = createStore(rootReducers, enhancer)
 
+
+function ajaxFunction(param,resolve){
+	axios.get(`https://job-server-pleao.herokuapp.com/jobs`)
+		.then((response)=>{
+			// do stuff
+			this.emit('find-job');
+			if (resolve) // IMPORTANT! call resolve only if it was passed.
+				resolve();
+			});
+
+
+ReactSEO.startMagic([{url:'/',isFullMatch:false,
+      ajaxFunction:getAllJobs,urlParams:[]}],renderDOM);
+
+
+function renderDOM(){
+    ReactDOM.render(
+      <BrowserRouter basename='/' >
+        <div>
+          <Route path = '/' component={Page1} />
+          <Route path='/products/:id' component={Page2} />
+          </div>
+      </BrowserRouter>
+      ,app);
+      }
 
 ReactDOM.render(
   <Provider store={store} >
