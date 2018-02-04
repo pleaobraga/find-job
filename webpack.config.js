@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
-
+var BabelPlugin = require("babel-webpack-plugin")
 
 const VENDOR_LIBS = [
   'react', 
@@ -48,7 +48,30 @@ module.exports = {
       template: 'src/index.html'
     }),
     new OpenBrowserPlugin({ url: 'http://localhost:3333' }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new BabelPlugin({
+      test: /\.js$/,
+      presets: [
+        [
+          'env',
+          {
+            exclude: [
+              'transform-regenerator'
+            ],
+            loose: true,
+            modules: false,
+            targets: {
+              browsers: [
+                '>1%'
+              ]
+            },
+            useBuiltIns: true
+          }
+        ]
+      ],
+     sourceMaps: false,
+     compact: false
+    })
 
   ],
   devServer: {
