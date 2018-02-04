@@ -17,7 +17,7 @@ const getAllJobsInit = () => ({
 /**
  * plain object which contains a jobs array 
  * 
- * @param {any} jobs 
+ * @param {array object} jobs 
  */
 const getAllJobsSuccess = jobs => ({
     type: constant.GET_ALL_JOBS_SUCCESS, 
@@ -29,7 +29,7 @@ const getAllJobsSuccess = jobs => ({
  * plain object which contains a error message
  * from get all jobs
  * 
- * @param {any} error 
+ * @param {object} error 
  */
 const getAllJobsError = error => ({
     type: constant.GET_ALL_JOBS_ERROR, 
@@ -60,7 +60,7 @@ const getJobSuccess = job => ({
  * plain object which contains a error message
  * from get job
  * 
- * @param {string} error 
+ * @param {object} error 
  */
 const getJobError = error => ({
     type: constant.GET_JOB_ERROR, 

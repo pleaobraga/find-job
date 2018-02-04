@@ -4,7 +4,7 @@ import Typography from 'material-ui/Typography'
 import styled from 'styled-components'
 
 
-const MessageBlock = styled.div`
+const MessageBlock = styled(Paper)`
     && {
         padding: 20px;
         display: flex;
