@@ -102,7 +102,7 @@ function JobList(props) {
             return (
                 <StyledCard key={job.id} onClick={ () => showJobDetail(job.id) } >
                     <StyledCardMedia
-                        image="http://lorempixel.com/100/100"
+                        //image="http://lorempixel.com/100/100"
                     />
                     <Container component='div' >
                         <Typography component='h3' >{job.title}</Typography>
