@@ -122,7 +122,7 @@ class JobView extends Component {
                 }
                 {
                     !fetching && error && 
-                    <ErrorMessage error={this.props.errorMessage} />
+                    <ErrorMessage error={this.props.jobs.errorMessage} />
                 }
             </Container>
         )

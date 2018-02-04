@@ -36,6 +36,8 @@ function jobs (state = initialState, actions) {
             return { 
                 ...state, 
                 fetching: false, 
+                jobs: [],
+                job: {}, 
                 error: true, 
                 errorMessage: actions.error
             }

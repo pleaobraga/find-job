@@ -44,8 +44,7 @@ function ErrorMessage(props) {
             <MessageBlock>
                 <Title>An Error Has Occurred</Title>
                 <Message> 
-                    The message error is:
-                    <pre> { props.error } </pre> 
+                    { props.error.stack } 
                 </Message>
             </MessageBlock>
         )
