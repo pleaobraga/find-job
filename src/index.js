@@ -3,13 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch, } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, } from 'react-router-dom'
 import ReduxThunk from 'redux-thunk';
 import AvaiableJobs from './pages/AvailableJobs'
 import JobView from './pages/JobView'
-import Reboot from 'material-ui/Reboot';
+import Reboot from 'material-ui/Reboot'
 import 'typeface-roboto'
-import rootReducers from './reducer';
+import rootReducers from './reducer'
+import 'babel-polyfill'
 
 const composeEnhancers =
   typeof window === 'object' &&
