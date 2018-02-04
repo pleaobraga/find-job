@@ -75,7 +75,7 @@ const getJobError = error => ({
  * and send it to reducer
  * 
  */
-const getAllJobs = () => dispatch => {
+export const getAllJobs = () => dispatch => {
     dispatch(getAllJobsInit())
 
     return api.getAllJobs()
@@ -94,7 +94,7 @@ const getAllJobs = () => dispatch => {
  * 
  * @param {integer} id 
  */
-const getJob = (id) => dispatch => {
+export const getJob = (id) => dispatch => {
     dispatch(getJobInit())
 
     return api.getJob(id)
@@ -103,5 +103,5 @@ const getJob = (id) => dispatch => {
                 dispatch(getJobSuccess(response.data))
             },1000)
         })
-        .catch( error => dispatch(getJobsError(error)))
+        .catch( error => dispatch(getJobError(error)))
 }

@@ -8,7 +8,7 @@ import { URL_BASE } from '../constants'
  * 
  * @returns promisse
  */
-const getAllJobs = () => {
+export const getAllJobs = () => {
     return axios.get(`${URL_BASE}/jobs`)
 }
 
@@ -19,6 +19,6 @@ const getAllJobs = () => {
  * @param {integer} id 
  * @returns 
  */
-const getJob = (id) => {
+export const getJob = (id) => {
     return axios.get(`${URL_BASE}/jobs/${id}`)
 }

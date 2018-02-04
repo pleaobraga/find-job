@@ -12,6 +12,7 @@ import Grid from 'material-ui/Grid'
 import styled from 'styled-components'
 import { CircularProgress } from 'material-ui/Progress'
 import { withRouter } from 'react-router-dom'
+import ErrorMessage from '../components/ErrorMessage'
 
 
 

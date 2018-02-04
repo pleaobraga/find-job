@@ -5,7 +5,7 @@
  * @param {dateTime} postDate 
  * @returns string
  */
-const rangeDays = (postDate) => {
+export const rangeDays = (postDate) => {
     const today = new Date()
     const millisecondsPerDay = 24 * 60 * 60 * 1000;
     let range = (today - postDate) / millisecondsPerDay;
