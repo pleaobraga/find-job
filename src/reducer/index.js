@@ -8,7 +8,13 @@ const initialState = {
     job: {}
 
 }
-
+/**
+ * job reducer
+ * 
+ * @param {object} [state=initialState] 
+ * @param {any} actions 
+ * @returns 
+ */
 function jobs (state = initialState, actions) {
     switch(actions.type) {
         case constant.GET_JOB:

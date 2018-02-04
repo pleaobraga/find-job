@@ -24,7 +24,13 @@ const Loader = styled(CircularProgress) `
         margin-top: 60px
     }
 `
-
+/**
+ * class which is a home page
+ * and renders all jobs 
+ * 
+ * @class AvailableJobs
+ * @extends {Component}
+ */
 class AvailableJobs extends Component {
     
     componentDidMount() {
@@ -53,7 +59,6 @@ class AvailableJobs extends Component {
                     !fetching && error && 
                     <ErrorMessage error={this.props.errorMessage} />
                 }
-
             </Container>
         )
     }

@@ -65,7 +65,14 @@ const Header = styled(Card) `
         background: #B2EBF2;
     }
 `
-
+/**
+ * stateless functional components
+ * which renders some resume informations
+ * about one job 
+ * 
+ * @param {object} props 
+ * @returns 
+ */
 function JobDetailHeader (props) {
 
     if( props.job ) {

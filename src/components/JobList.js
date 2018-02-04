@@ -73,13 +73,30 @@ const Box = styled.div `
     width: 100%;
 `
 
-
+/**
+ * stateless functional component
+ * which renders a list of jobs
+ * 
+ * @param {any} props 
+ * @returns 
+ */
 function JobList(props) {
 
+    /**
+     * goes to detail job page
+     * 
+     * @param {integer} id 
+     */
     function showJobDetail (id) {
         props.history.push(`/${id}`);
     }
 
+    /**
+     * render each job from job list
+     * 
+     * @param {array of objects} jobs 
+     * @returns jsx
+     */
     function renderJobOpportunity (jobs) {
         return jobs.map(job => {
             return (

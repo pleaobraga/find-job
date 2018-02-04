@@ -29,7 +29,13 @@ const Message = styled(Typography)`
     }
 `
 
-
+/**
+ * stateless functional components
+ * which renders a error message  
+ * 
+ * @param {object} props 
+ * @returns 
+ */
 function ErrorMessage(props) {
 
     if(props.error) {

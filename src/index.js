@@ -18,7 +18,7 @@ const composeEnhancers =
     }) : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(ReduxThunk),
+    applyMiddleware(ReduxThunk),
 );
 
 const store = createStore(rootReducers, enhancer);

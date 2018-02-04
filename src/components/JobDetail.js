@@ -36,15 +36,34 @@ const StyledPaper = styled(Paper) `
 const List = styled.ul `
     margin: 10px 0px;
 `
-
+/**
+ * stateless functional component
+ * which renders a single job detail  
+ * 
+ * @param {object} props 
+ * @returns 
+ */
 function JobDetail(props) {
 
+    /**
+     * render the job detail description  
+     * 
+     * @param {object} description 
+     * @returns jsx
+     */
     function renderDescription(description) {
         return description.type === 'text' 
             ? renderText(description)
             : renderList(description)
     }
 
+
+    /**
+     * render each topic from a job
+     * 
+     * @param {array objects} topics 
+     * @returns 
+     */
     function renderTopics(topics) {
         return topics.map( topic => {
             return topic.type === 'text' 
@@ -53,6 +72,15 @@ function JobDetail(props) {
         })
     }
 
+
+
+    /**
+     * render a title and 
+     * a unnumbered list
+     * 
+     * @param {object} section 
+     * @returns 
+     */
     function renderList(section) {
         return (
             <Container key={section.title} >
@@ -71,6 +99,13 @@ function JobDetail(props) {
         )
     }
 
+    
+    /**
+     * render a tile and a paragraph
+     * 
+     * @param {object} section 
+     * @returns 
+     */
     function renderText(section) {
         return (
             <Container key={section.title} >

@@ -46,7 +46,13 @@ const Container = styled.div `
     }
 `
 
-
+/**
+ * class which renders the 
+ * job detail page
+ * 
+ * @class JobView
+ * @extends {Component}
+ */
 class JobView extends Component {
 
     constructor() {
@@ -59,13 +65,23 @@ class JobView extends Component {
         this.props.getJob(id)
     }
 
+
+    /**
+     * returns to home page
+     * 
+     * @memberof JobView
+     */
     backToHome () {
         this.props.history.push(`/`);
     }
 
     render() {
 
-        let { job, fetching, error } = this.props.jobs
+        let { 
+            job, 
+            fetching, 
+            error 
+        } = this.props.jobs
 
         return(
             <Container>
@@ -108,24 +124,8 @@ class JobView extends Component {
                     <ErrorMessage error={this.props.errorMessage} />
                 }
             </Container>
-
-
         )
-
-        //if( fetching ) {
-           return <Loader size={50} />
-        //}
-        
-        /*if(!_.isEmpty(job)) {
-            return (
-                
-            )
-        }
-
-        return null*/
     }
-    
-
 }
 
 const mapStateToProps = ({ jobs }) => ({ jobs })
