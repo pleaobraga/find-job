@@ -10,6 +10,9 @@ import Button from 'material-ui/Button/Button'
 import Typography from 'material-ui/Typography'
 import Grid from 'material-ui/Grid'
 import styled from 'styled-components'
+import { CircularProgress } from 'material-ui/Progress'
+import { withRouter } from 'react-router-dom'
+
 
 
 const ApplyCard = styled(Card)`
@@ -29,6 +32,20 @@ const Title = styled(Typography)`
     }
 `
 
+const Loader = styled(CircularProgress) `
+    && {
+        margin-top: 60px
+    }
+`
+
+const Container = styled.div `
+    && {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+`
+
 
 class JobView extends Component {
 
@@ -42,55 +59,81 @@ class JobView extends Component {
         this.props.getJob(id)
     }
 
+    backToHome () {
+        this.props.history.push(`/`);
+    }
+
     render() {
 
-        let { job } = this.props
+        let { job, fetching, error } = this.props.jobs
+
+        return(
+            <Container>
+                {
+                    fetching &&
+                     <Loader size={50} />
+                }
+                {
+                    !fetching && !_.isEmpty(job) &&
+                    <div>
+                        <Grid container spacing={24}>
+                            <Grid item xs={12}>
+                                <JobDetailHeader job={job} />
+                            </Grid>
+                            <Grid item sm={8}>
+                                <JobDetail job={job} />
+                            </Grid>
+                            <Grid item sm={4}>
+                                <ApplyCard>
+                                    <CardContent> 
+                                        <Title>Apply for this job</Title> 
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button 
+                                            raised 
+                                            color="secondary" 
+                                            size="large"
+                                            onClick={() => this.backToHome()}
+                                        > 
+                                            Apply Now
+                                        </Button> 
+                                    </CardActions>
+                                </ApplyCard>
+                            </Grid>
+                        </Grid>
+                    </div>
+                }
+                {
+                    !fetching && error && 
+                    <ErrorMessage error={this.props.errorMessage} />
+                }
+            </Container>
+
+
+        )
+
+        //if( fetching ) {
+           return <Loader size={50} />
+        //}
         
-        if(!_.isEmpty(job)) {
+        /*if(!_.isEmpty(job)) {
             return (
-                <div>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <JobDetailHeader job={job} />
-                        </Grid>
-                        <Grid item sm={8}>
-                            <JobDetail job={job} />
-                        </Grid>
-                        <Grid item sm={4}>
-                            <ApplyCard>
-                                <CardContent> 
-                                    <Title>Apply for this job</Title> 
-                                </CardContent>
-                                <CardActions>
-                                    <Button 
-                                        raised 
-                                        color="secondary" 
-                                        size="large"
-                                    > 
-                                        Apply Now
-                                    </Button> 
-                                </CardActions>
-                            </ApplyCard>
-                        </Grid>
-                    </Grid>
-                </div>
+                
             )
         }
 
-        return null
+        return null*/
     }
     
 
 }
 
-const mapStateToProps = ({ jobs }) => ({ 
-    job: jobs.job
-})
+const mapStateToProps = ({ jobs }) => ({ jobs })
 
 const mapDispatchToProps = dispatch => ({
     getJob: (id) =>  dispatch(actions.getJob(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(JobView)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(JobView))
 
 

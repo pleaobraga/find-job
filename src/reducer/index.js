@@ -31,7 +31,7 @@ function jobs (state = initialState, actions) {
                 ...state, 
                 fetching: false, 
                 error: true, 
-                message: actions.error
+                errorMessage: actions.error
             }
 
         case constant.GET_JOB_SUCCESS:

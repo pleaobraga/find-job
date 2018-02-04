@@ -5,6 +5,7 @@ import { CircularProgress } from 'material-ui/Progress'
 import TextField from 'material-ui/TextField'
 import JobList from '../components/JobList'
 import styled from 'styled-components'
+import ErrorMessage from '../components/ErrorMessage'
 
 
 const Container = styled.div `
@@ -49,8 +50,10 @@ class AvailableJobs extends Component {
                     <JobList jobs={jobs} />
                 }
                 {
-                    !fetching && error
+                    !fetching && error && 
+                    <ErrorMessage error={this.props.errorMessage} />
                 }
+
             </Container>
         )
     }
