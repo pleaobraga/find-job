@@ -21,7 +21,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[hash].js'
   },
   devtool: 'eval-source-map',
   module: {
@@ -47,10 +47,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new OpenBrowserPlugin({ url: 'http://localhost:3333' })
+    new OpenBrowserPlugin({ url: 'http://localhost:3333' }),
+    new webpack.HotModuleReplacementPlugin()
+
   ],
   devServer: {
     inline:true,
-    port: 3333
-  },
+    port: 3333,
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true
+  }
 };
