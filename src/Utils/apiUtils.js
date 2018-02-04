@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { URL_BASE } from '../constants'
+import { URL_BASE } from '../shared/constants'
 
 //jobs Requests
 

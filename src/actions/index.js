@@ -1,5 +1,5 @@
 
-import * as constant from '../constants'
+import * as constant from '../shared/constants'
 import * as api from '../Utils/apiUtils'
 
 //-----------jobs------------

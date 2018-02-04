@@ -1,4 +1,4 @@
-import * as constant from '../constants'
+import * as constant from '../shared/constants'
 import { combineReducers } from 'redux'
 
 const initialState = {
