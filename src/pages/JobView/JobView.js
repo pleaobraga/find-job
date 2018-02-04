@@ -1,51 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import JobDetail from '../components/JobDetail' 
-import JobDetailHeader from '../components/JobDetailHeader' 
-import * as actions from '../actions'
-import Card from 'material-ui/Card/Card'
+import JobDetail from '../../components/JobDetail/JobDetail' 
+import JobDetailHeader from '../../components/JobDetailHeader/JobDetailHeader' 
+import * as actions from '../../actions'
 import CardActions from 'material-ui/Card/CardActions'
 import CardContent from 'material-ui/Card/CardContent'
 import Button from 'material-ui/Button/Button'
-import Typography from 'material-ui/Typography'
 import Grid from 'material-ui/Grid'
-import styled from 'styled-components'
-import { CircularProgress } from 'material-ui/Progress'
 import { withRouter } from 'react-router-dom'
-import ErrorMessage from '../components/ErrorMessage'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
+import {
+    ApplyCard,
+    Title,
+    Loader,
+    Container
+} from './styledComponents'
 
-
-
-const ApplyCard = styled(Card)`
-    && {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 10px;
-    }
-`
-
-const Title = styled(Typography)`
-    && {
-        font-size: 1.1em;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
-`
-
-const Loader = styled(CircularProgress) `
-    && {
-        margin-top: 60px
-    }
-`
-
-const Container = styled.div `
-    && {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-`
 
 /**
  * class which renders the 

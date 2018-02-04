@@ -1,77 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
 import _ from 'lodash'
-import Card, { CardContent, CardMedia } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import Icon from 'material-ui/Icon'
-import { rangeDays } from '../Utils/helper'
+import { rangeDays } from '../../Utils/helper'
 import { withRouter } from 'react-router-dom'
+import {
+    StyledCard,
+    StyledCardContent,
+    IconTag,
+    Container,
+    StyledCardMedia,
+    Box
+} from './styledComponents'
 
-
-
-const StyledCard = styled(Card)`
-    && {
-        display: flex;
-        padding: 20px;
-        cursor: pointer;
-
-        h3 {
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-
-        h4 {
-            font-size: 0.9em;
-        }
-
-        &:hover {
-            background: #e8e8e8;
-        }
-    }
-`
-
-const StyledCardContent = styled(CardContent) `
-    && {
-        display: flex;
-        padding: 20px 0 0 0 !important ;
-
-        > span {
-            margin-right: 30px;
-        }
-    }
-`
-
-const IconTag = styled(Typography) `
-    && {
-        display: flex;
-        align-items: center;
-        font-size: 13px;    
-
-        span {
-            margin-right: 5px;
-            font-size: 13px
-        }
-    }
-`
-
-const Container = styled(CardContent) `
-    && {
-        padding: 0px 0 0 20px !important;
-    }
-`
-
-const StyledCardMedia = styled(CardMedia)`
-    && {
-        height: 100px;
-        width: 100px;
-        background: #f8f8f8;
-    }
-`
-
-const Box = styled.div `
-    max-width: 680px;
-    width: 100%;
-`
 
 /**
  * stateless functional component
@@ -102,7 +43,7 @@ function JobList(props) {
             return (
                 <StyledCard key={job.id} onClick={ () => showJobDetail(job.id) } >
                     <StyledCardMedia
-                        //image="http://lorempixel.com/100/100"
+                        image="http://lorempixel.com/100/100"
                     />
                     <Container component='div' >
                         <Typography component='h3' >{job.title}</Typography>

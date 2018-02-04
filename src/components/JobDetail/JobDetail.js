@@ -1,41 +1,13 @@
 import React from 'react'
 import _ from 'lodash'
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
-import styled from 'styled-components'
+import {
+    Container,
+    Title,
+    Text,
+    StyledPaper,
+    List
+} from './styledComponents'
 
-
-const Container = styled.div `
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 10px 0;
-`
-
-const Title = styled(Typography) `
-    && {
-        font-size: 1.0em;
-        font-weight: 600;
-        margin: 10px 0
-    }
-`
-
-const Text = styled(Typography) `
-    && {
-        font-size: 0.9em;
-    }
-`
-
-const StyledPaper = styled(Paper) `
-    && {
-        padding 20px;
-    }
-`
-
-const List = styled.ul `
-    margin: 10px 0px;
-`
 /**
  * stateless functional component
  * which renders a single job detail  

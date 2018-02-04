@@ -1,29 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions'
-import { CircularProgress } from 'material-ui/Progress'
+import * as actions from '../../actions'
 import TextField from 'material-ui/TextField'
-import JobList from '../components/JobList'
-import styled from 'styled-components'
-import ErrorMessage from '../components/ErrorMessage'
+import JobList from '../../components/JobList/JobList'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
+import {
+    Container,
+    Title,
+    Loader
+} from './styledComponents'
 
 
-const Container = styled.div `
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-`
-
-const Title = styled.h1 `
-    font-size: 2.5em;
-`
-
-const Loader = styled(CircularProgress) `
-    && {
-        margin-top: 60px
-    }
-`
 /**
  * class which is a home page
  * and renders all jobs 
