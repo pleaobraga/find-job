@@ -3,10 +3,6 @@ const path = require('path');
 
 const app = express();
 
-const React = require('react');
-const renderToString = require ('react-dom/server');
-const AvaiableJobs = require('./src/pages/AvailableJobs');
-
 // Server routes...
 if (process.env.NODE_ENV !== 'production') {
   const webpackMiddleware = require('webpack-dev-middleware');

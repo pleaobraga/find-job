@@ -1,9 +1,6 @@
 
-import * as env from './env'
-
-
 //api constants
-export const URL_BASE               = `${env.URL_BASE}`
+export const URL_BASE               = `https://job-server-pleao.herokuapp.com`
 
 
 //jobs constants
